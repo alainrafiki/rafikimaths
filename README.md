@@ -1,2 +1,2 @@
-# rafikimaths
+# Rafiki Maths
 Friendly Math Exercises
