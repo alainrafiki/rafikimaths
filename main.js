@@ -62,7 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (level) {
             case 'pre-k':
             case 'kindergarten':
-                return generateAdditionExercise(level);
+                switch (topic) {
+                    case 'Addition':
+                        return generateAdditionExercise(level);
+                    default:
+                        // Handle new topics or throw an error for invalid topics
+                        return null;
+                }
             default:
                 switch (topic) {
                     case 'Addition':
@@ -73,9 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         return generateMultiplicationExercise(level);
                     case 'Division':
                         return generateDivisionExercise(level);
+                    default:
+                        // Handle new topics or throw an error for invalid topics
+                        return null;
                 }
         }
     }
+    
 
     function displayExercise(exercise) {
         questionContainer.innerHTML = `
