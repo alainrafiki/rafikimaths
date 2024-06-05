@@ -115,3 +115,45 @@ function generateDivisionExercise(level) {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// // exercises.js
+
+// function generateAdditionExercise(level) {
+//     const num1 = getRandomInt(1, 10);
+//     const num2 = getRandomInt(1, 10);
+//     return {
+//         question: `${num1} + ${num2} = ?`,
+//         answer: num1 + num2
+//     };
+// }
+
+// function generateSubtractionExercise(level) {
+//     const num1 = getRandomInt(5, 15);
+//     const num2 = getRandomInt(1, 5);
+//     return {
+//         question: `${num1} - ${num2} = ?`,
+//         answer: num1 - num2
+//     };
+// }
+
+// function generateMultiplicationExercise(level) {
+//     const num1 = getRandomInt(1, 10);
+//     const num2 = getRandomInt(1, 10);
+//     return {
+//         question: `${num1} * ${num2} = ?`,
+//         answer: num1 * num2
+//     };
+// }
+
+// function generateDivisionExercise(level) {
+//     const num1 = getRandomInt(10, 50);
+//     const num2 = getRandomInt(1, 10);
+//     return {
+//         question: `${num1} / ${num2} = ?`,
+//         answer: (num1 / num2).toFixed(2)
+//     };
+// }
+
+// function getRandomInt(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
