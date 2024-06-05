@@ -24,11 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function loadTopics(level) {
+        // Load topics based on level
         const topics = getTopicsForLevel(level);
         topicSelect.innerHTML = topics.map(topic => `<option value="${topic}">${topic}</option>`).join('');
+        // If there is only one topic, automatically select it and start exercises
+        if (topics.length === 1) {
+            currentTopic = topics[0];
+            topicSelect.value = currentTopic;
+            startExercises();
+        }
     }
 
     function getTopicsForLevel(level) {
+        // Define topics for each level
         const topics = {
             'pre-k': ['Addition'],
             'kindergarten': ['Addition', 'Subtraction'],
@@ -44,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startExercises() {
         correctAnswers = 0;
-        updateProgress(correctAnswers, totalExercises);
+        updateProgress(correctAnswers, totalExercises); // Use function from progress.js
         loadNextExercise();
     }
 
@@ -88,16 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkAnswer(userAnswer) {
         if (userAnswer == currentExercise.answer) {
-            showFeedback(true);
+            showFeedback(true); // Use function from progress.js
             correctAnswers++;
             if (correctAnswers >= totalExercises) {
                 feedback.textContent = 'Congratulations! You have completed the exercises.';
                 return;
             }
         } else {
-            showFeedback(false, currentExercise.answer);
+            showFeedback(false, currentExercise.answer); // Use function from progress.js
         }
-        updateProgress(correctAnswers, totalExercises);
+        updateProgress(correctAnswers, totalExercises); // Use function from progress.js
         loadNextExercise();
     }
 });
