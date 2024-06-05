@@ -59,15 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateExercise(level, topic) {
-        switch (topic) {
-            case 'Addition':
+        switch (level) {
+            case 'pre-k':
+            case 'kindergarten':
                 return generateAdditionExercise(level);
-            case 'Subtraction':
-                return generateSubtractionExercise(level);
-            case 'Multiplication':
-                return generateMultiplicationExercise(level);
-            case 'Division':
-                return generateDivisionExercise(level);
+            default:
+                switch (topic) {
+                    case 'Addition':
+                        return generateAdditionExercise(level);
+                    case 'Subtraction':
+                        return generateSubtractionExercise(level);
+                    case 'Multiplication':
+                        return generateMultiplicationExercise(level);
+                    case 'Division':
+                        return generateDivisionExercise(level);
+                }
         }
     }
 
