@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafiki Maths</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Rafiki Maths</h1>
+        <div>
+            <label for="level-select">Select Level:</label>
+            <select id="level-select">
+                <option value="" disabled selected>Select level</option>
+                <option value="pre-k">Pre-K</option>
+                <option value="kindergarten">Kindergarten</option>
+                <option value="1st">1st Grade</option>
+                <option value="2nd">2nd Grade</option>
+                <option value="3rd">3rd Grade</option>
+                <option value="4th">4th Grade</option>
+                <option value="5th">5th Grade</option>
+                <option value="6th">6th Grade</option>
+            </select>
+        </div>
+        <div>
+            <label for="topic-select">Select Topic:</label>
+            <select id="topic-select">
+                <option value="" disabled selected>Select topic</option>
+            </select>
+        </div>
+        <div id="question-container"></div>
+        <div id="progress-bar-container">
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+        </div>
+        <div id="feedback"></div>
+    </div>
+    <script src="exercises.js"></script>
+    <script src="progress.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
