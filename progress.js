@@ -11,13 +11,10 @@ function updateProgress(correctAnswers, totalExercises) {
 
 function showFeedback(isCorrect, correctAnswer = null) {
     const feedback = document.getElementById('feedback');
-    if (isCorrect) {
-        feedback.textContent = 'Correct!';
-        feedback.classList.add('correct');
-        feedback.classList.remove('incorrect');
-    } else {
-        feedback.textContent = `Incorrect. The correct answer was ${correctAnswer}.`;
-        feedback.classList.add('incorrect');
-        feedback.classList.remove('correct');
-    }
+    feedback.textContent = isCorrect ? 'Correct!' : `Incorrect. The correct answer was ${correctAnswer}.`;
+    feedback.className = isCorrect ? 'correct' : 'incorrect';
+    setTimeout(() => {
+        feedback.textContent = '';
+        feedback.className = '';
+    }, 2000);
 }

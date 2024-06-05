@@ -1,5 +1,21 @@
 // exercises.js
 
+function generateExercise(level, topic) {
+    let num1, num2;
+    switch (topic) {
+        case 'Addition':
+            return generateAdditionExercise(level);
+        case 'Subtraction':
+            return generateSubtractionExercise(level);
+        case 'Multiplication':
+            return generateMultiplicationExercise(level);
+        case 'Division':
+            return generateDivisionExercise(level);
+        default:
+            return null;
+    }
+}
+
 function generateAdditionExercise(level) {
     let num1, num2;
     switch (level) {

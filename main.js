@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const topics = {
             'pre-k': ['Addition'],
             'kindergarten': ['Addition', 'Subtraction'],
-            '1st': ['Addition', 'Subtraction'],
+            '1st': ['Addition', 'Subtraction', 'Multiplication'],
             '2nd': ['Addition', 'Subtraction', 'Multiplication'],
             '3rd': ['Addition', 'Subtraction', 'Multiplication', 'Division'],
             '4th': ['Addition', 'Subtraction', 'Multiplication', 'Division'],
@@ -59,33 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateExercise(level, topic) {
-        switch (level) {
-            case 'pre-k':
-            case 'kindergarten':
-                switch (topic) {
-                    case 'Addition':
-                        return generateAdditionExercise(level);
-                    default:
-                        // Handle new topics or throw an error for invalid topics
-                        return null;
-                }
-            default:
-                switch (topic) {
-                    case 'Addition':
-                        return generateAdditionExercise(level);
-                    case 'Subtraction':
-                        return generateSubtractionExercise(level);
-                    case 'Multiplication':
-                        return generateMultiplicationExercise(level);
-                    case 'Division':
-                        return generateDivisionExercise(level);
-                    default:
-                        // Handle new topics or throw an error for invalid topics
-                        return null;
-                }
+        switch (topic) {
+            case 'Addition':
+                return generateAdditionExercise(level);
+            case 'Subtraction':
+                return generateSubtractionExercise(level);
+            case 'Multiplication':
+                return generateMultiplicationExercise(level);
+            case 'Division':
+                return generateDivisionExercise(level);
         }
     }
-    
 
     function displayExercise(exercise) {
         questionContainer.innerHTML = `
@@ -93,43 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="text" id="answer-input" autofocus>
             <button id="submit-button">Submit</button>
         `;
-        const answerInput = document.getElementById('answer-input');
         const submitButton = document.getElementById('submit-button');
         submitButton.addEventListener('click', submitAnswer);
-        answerInput.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                submitAnswer();
-            }
+        document.getElementById('answer-input').addEventListener('keydown', event => {
+            if (event.key === 'Enter') submitAnswer();
         });
     }
 
     function submitAnswer() {
-        const answerInput = document.getElementById('answer-input');
-        const userAnswer = answerInput.value;
+        const userAnswer = document.getElementById('answer-input').value;
         checkAnswer(userAnswer);
     }
 
     function checkAnswer(userAnswer) {
         if (userAnswer == currentExercise.answer) {
-            showFeedback(true);
             correctAnswers++;
             updateProgress(correctAnswers, totalExercises);
+            showFeedback(true);
             if (correctAnswers >= totalExercises) {
                 feedback.textContent = 'Congratulations! You have completed the exercises.';
                 return;
             }
+            loadNextExercise();
         } else {
             showFeedback(false, currentExercise.answer);
         }
-        updateProgress(correctAnswers, totalExercises);
-        loadNextExercise();
-    }
-    
-
-    function showFeedback(isCorrect, correctAnswer = '') {
-        feedback.textContent = isCorrect ? 'Correct!' : `Incorrect. The correct answer is ${correctAnswer}.`;
-        setTimeout(() => {
-            feedback.textContent = '';
-        }, 2000);
     }
 });
