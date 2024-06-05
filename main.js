@@ -44,11 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return topics[level] || [];
     }
 
-    // function startExercises() {
-    //     correctAnswers = 0;
-    //     updateProgress();
-    //     loadNextExercise();
-    // }
     function startExercises() {
         correctAnswers = 0;
         updateProgress(correctAnswers, totalExercises); // Use function from progress.js
@@ -73,45 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // function generateExercise(level, topic) {
-    //     // Generate an exercise based on level and topic
-    //     // Simple implementation example:
-    //     let num1 = Math.floor(Math.random() * 10);
-    //     let num2 = Math.floor(Math.random() * 10);
-    //     let operator = '';
-    //     let answer = 0;
-
-    //     switch (topic) {
-    //         case 'Addition':
-    //             operator = '+';
-    //             answer = num1 + num2;
-    //             break;
-    //         case 'Subtraction':
-    //             operator = '-';
-    //             answer = num1 - num2;
-    //             break;
-    //         case 'Multiplication':
-    //             operator = '*';
-    //             answer = num1 * num2;
-    //             break;
-    //         case 'Division':
-    //             operator = '/';
-    //             answer = (num1 / num2).toFixed(2); // Limiting to 2 decimal places
-    //             break;
-    //     }
-
-    //     return {
-    //         question: `${num1} ${operator} ${num2} = ?`,
-    //         answer: answer
-    //     };
-    // }
-
     function displayExercise(exercise) {
         questionContainer.innerHTML = `
             <div>${exercise.question}</div>
-            <input type="text" id="answer-input">
+            <input type="text" id="answer-input" autofocus>
             <button onclick="submitAnswer()">Submit</button>
         `;
+        const answerInput = document.getElementById('answer-input');
+        answerInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                submitAnswer();
+            }
+        });
     }
 
     window.submitAnswer = function() {
@@ -119,21 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const userAnswer = answerInput.value;
         checkAnswer(userAnswer);
     }
-
-    // function checkAnswer(userAnswer) {
-    //     if (userAnswer == currentExercise.answer) {
-    //         feedback.textContent = 'Correct!';
-    //         correctAnswers++;
-    //         if (correctAnswers >= totalExercises) {
-    //             feedback.textContent = 'Congratulations! You have completed the exercises.';
-    //             return;
-    //         }
-    //     } else {
-    //         feedback.textContent = `Incorrect. The correct answer was ${currentExercise.answer}.`;
-    //     }
-    //     updateProgress();
-    //     loadNextExercise();
-    // }
 
     function checkAnswer(userAnswer) {
         if (userAnswer == currentExercise.answer) {
@@ -148,10 +101,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateProgress(correctAnswers, totalExercises); // Use function from progress.js
         loadNextExercise();
-    }
-
-    function updateProgress() {
-        progress.style.width = `${(correctAnswers / totalExercises) * 100}%`;
-        progressBar.textContent = `${correctAnswers} / ${totalExercises}`;
     }
 });
