@@ -71,7 +71,7 @@ The app is simple, intuitive, and can be easily hosted on GitHub Pages for conve
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
