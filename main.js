@@ -93,21 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         checkAnswer(userAnswer);
     }
 
-    // function checkAnswer(userAnswer) {
-    //     if (userAnswer == currentExercise.answer) {
-    //         showFeedback(true);
-    //         correctAnswers++;
-    //         if (correctAnswers >= totalExercises) {
-    //             feedback.textContent = 'Congratulations! You have completed the exercises.';
-    //             return;
-    //         }
-    //     } else {
-    //         showFeedback(false, currentExercise.answer);
-    //     }
-    //     updateProgress(correctAnswers, totalExercises);
-    //     loadNextExercise();
-    // }
-
     function checkAnswer(userAnswer) {
         if (userAnswer == currentExercise.answer) {
             showFeedback(true);
@@ -120,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             showFeedback(false, currentExercise.answer);
         }
+        updateProgress(correctAnswers, totalExercises);
         loadNextExercise();
     }
     
