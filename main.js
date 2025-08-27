@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let correctAnswers = 0;
     let totalExercises = 10;
 
+    // Initialize gamification system
+    window.gameSystem.initializeDisplay();
+
     levelSelect.addEventListener('change', () => {
         currentLevel = levelSelect.value;
         loadTopics(currentLevel);
@@ -92,14 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkAnswer(userAnswer) {
         if (userAnswer == currentExercise.answer) {
             correctAnswers++;
+            // Gamification: Award points and increment streak
+            window.gameSystem.addPoints(10);
+            window.gameSystem.incrementStreak();
+            
             updateProgress(correctAnswers, totalExercises);
             showFeedback(true);
             if (correctAnswers >= totalExercises) {
-                feedback.textContent = 'Congratulations! You have completed the exercises.';
+                // Bonus points for completing a session
+                window.gameSystem.addPoints(50);
+                feedback.textContent = 'Congratulations! You have completed the exercises. +50 bonus points!';
                 return;
             }
             loadNextExercise();
         } else {
+            // Reset streak on wrong answer
+            window.gameSystem.resetStreak();
             showFeedback(false, currentExercise.answer);
         }
     }

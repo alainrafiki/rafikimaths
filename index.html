@@ -10,7 +10,11 @@
     <div id="app">
         <h1>Rafiki Maths</h1>
         <div>Let's have some fun!</div>
-        <div></div>
+        <div class="game-stats">
+            <div id="score-display">Score: 0</div>
+            <div id="streak-display">Streak: 0 🔥</div>
+            <div id="badges-display" class="badges-container"></div>
+        </div>
         <div class="select-container">
             <label for="level-select">Select Level:</label>
             <select id="level-select">
@@ -41,6 +45,7 @@
     </div>
     <script src="exercises.js"></script>
     <script src="progress.js"></script>
+    <script src="gamification.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

@@ -60,3 +60,65 @@ body {
 .incorrect {
     color: red;
 }
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#score-display {
+    color: #28a745;
+}
+
+#streak-display {
+    color: #fd7e14;
+}
+
+.badges-container {
+    display: flex;
+    gap: 5px;
+}
+
+.badge-icon {
+    font-size: 1.2em;
+    cursor: help;
+}
+
+.badge-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+}
+
+.badge-content h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+}
+
+.badge-content p {
+    margin: 0;
+    font-size: 1em;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
