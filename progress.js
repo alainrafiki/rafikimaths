@@ -22,9 +22,13 @@ function updateProgress(correctAnswers, totalExercises) {
     }
 }
 
-function showFeedback(isCorrect, correctAnswer = null) {
+function showFeedback(isCorrect, correctAnswer = null, bonusMessage = null) {
     const feedback = document.getElementById('feedback');
-    feedback.textContent = isCorrect ? 'Correct!' : `Incorrect. The correct answer was ${correctAnswer}.`;
+    let message = isCorrect ? 'Correct!' : `Incorrect. The correct answer was ${correctAnswer}.`;
+    if (bonusMessage) {
+        message += ` ${bonusMessage}`;
+    }
+    feedback.textContent = message;
     feedback.className = isCorrect ? 'correct' : 'incorrect';
     setTimeout(() => {
         feedback.textContent = '';
