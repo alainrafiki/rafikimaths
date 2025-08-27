@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let challengeMode = false;
     let challengeTimer = null;
     let timeLeft = 30;
+    let questionStartTime = null;
 
     // Initialize gamification system
     window.gameSystem.initializeDisplay();
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startExercises() {
         correctAnswers = 0;
+        window.performanceTracker.startSession();
         updateProgress(correctAnswers, totalExercises);
         loadNextExercise();
     }
@@ -80,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadNextExercise() {
         currentExercise = generateExercise(currentLevel, currentTopic);
         displayExercise(currentExercise);
+        questionStartTime = Date.now();
     }
 
     function generateExercise(level, topic) {
@@ -165,7 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
             stopChallengeTimer();
         }
 
-        if (userAnswer == currentExercise.answer) {
+        const timeSpent = Date.now() - questionStartTime;
+        const isCorrect = userAnswer == currentExercise.answer;
+
+        // Record performance data
+        window.performanceTracker.recordAnswer(isCorrect, currentTopic, timeSpent);
+        window.performanceTracker.updateStreak(window.gameSystem.streak);
+
+        if (isCorrect) {
             correctAnswers++;
             // Gamification: Award points and increment streak
             let points = 10;
@@ -180,6 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (correctAnswers >= totalExercises) {
                 // Bonus points for completing a session
                 window.gameSystem.addPoints(50);
+                // Show performance report
+                setTimeout(() => {
+                    window.performanceTracker.showPerformanceReport();
+                }, 1000);
                 feedback.textContent = 'Congratulations! You have completed the exercises. +50 bonus points!';
                 return;
             }

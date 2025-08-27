@@ -136,6 +136,164 @@ body {
     color: #dc3545;
 }
 
+.accessibility-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    font-size: 0.9em;
+}
+
+.accessibility-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* High contrast theme */
+body.high-contrast {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.high-contrast #app {
+    background-color: #1a1a1a;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+body.high-contrast .game-stats {
+    background-color: #2a2a2a;
+    border: 1px solid #ffffff;
+}
+
+body.high-contrast .challenge-mode,
+body.high-contrast .accessibility-options {
+    background-color: #2a2a2a;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+body.high-contrast .correct {
+    color: #00ff00 !important;
+    font-weight: bold;
+}
+
+body.high-contrast .incorrect {
+    color: #ff0000 !important;
+    font-weight: bold;
+}
+
+body.high-contrast #progress-bar-container {
+    border: 2px solid #ffffff;
+}
+
+body.high-contrast #progress-bar {
+    background-color: #004400;
+}
+
+body.high-contrast #progress {
+    background-color: #00ff00;
+}
+
+.report-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.performance-report {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.performance-report h3 {
+    margin-top: 0;
+    color: #28a745;
+    font-size: 1.5em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #495057;
+}
+
+.recommendations {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.recommendations h4 {
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.recommendations ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recommendations li {
+    background-color: #e7f3ff;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border-left: 3px solid #007bff;
+}
+
+.performance-report button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.performance-report button:hover {
+    background-color: #218838;
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
