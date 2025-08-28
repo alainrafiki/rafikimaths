@@ -131,3 +131,109 @@ function generateDivisionExercise(level) {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function generateFractionsExercise(level) {
+    const operations = ['add', 'subtract', 'simplify'];
+    const operation = operations[getRandomInt(0, operations.length - 1)];
+    
+    switch (operation) {
+        case 'add':
+            const num1 = getRandomInt(1, 8);
+            const num2 = getRandomInt(1, 8);
+            const denom = getRandomInt(2, 10);
+            return {
+                question: `${num1}/${denom} + ${num2}/${denom} = ?`,
+                answer: `${num1 + num2}/${denom}`
+            };
+        case 'subtract':
+            const a = getRandomInt(3, 10);
+            const b = getRandomInt(1, a - 1);
+            const denomSub = getRandomInt(2, 8);
+            return {
+                question: `${a}/${denomSub} - ${b}/${denomSub} = ?`,
+                answer: `${a - b}/${denomSub}`
+            };
+        case 'simplify':
+            const numerator = getRandomInt(2, 12);
+            const denominator = numerator * getRandomInt(2, 4);
+            const gcd = numerator;
+            return {
+                question: `Simplify: ${denominator}/${numerator} = ?`,
+                answer: `${denominator / gcd}/${numerator / gcd}`
+            };
+    }
+}
+
+function generateWordProblemExercise(level) {
+    const problems = [
+        {
+            question: "Sarah has 12 apples. She gives 4 apples to her friend. How many apples does she have left?",
+            answer: 8
+        },
+        {
+            question: "A box contains 24 chocolates. If there are 6 children and they share equally, how many chocolates does each child get?",
+            answer: 4
+        },
+        {
+            question: "Tom buys 3 packs of stickers. Each pack has 8 stickers. How many stickers does Tom have in total?",
+            answer: 24
+        },
+        {
+            question: "A classroom has 6 rows of desks. Each row has 5 desks. How many desks are there in total?",
+            answer: 30
+        },
+        {
+            question: "Emma collects 18 seashells at the beach. She gives 6 to her sister. How many seashells does Emma keep?",
+            answer: 12
+        }
+    ];
+    
+    const problem = problems[getRandomInt(0, problems.length - 1)];
+    return problem;
+}
+
+function generateGeometryExercise(level) {
+    const exercises = [
+        {
+            question: "A rectangle has length 8 units and width 4 units. What is its area?",
+            answer: 32
+        },
+        {
+            question: "A square has sides of length 6 units. What is its perimeter?",
+            answer: 24
+        },
+        {
+            question: "A triangle has a base of 10 units and height of 6 units. What is its area?",
+            answer: 30
+        },
+        {
+            question: "A circle has a radius of 5 units. What is its diameter?",
+            answer: 10
+        },
+        {
+            question: "A rectangle has length 12 units and width 3 units. What is its perimeter?",
+            answer: 30
+        }
+    ];
+    
+    const exercise = exercises[getRandomInt(0, exercises.length - 1)];
+    return exercise;
+}
+
+function generateMixedPracticeExercise(level) {
+    const topics = ['Addition', 'Subtraction', 'Multiplication', 'Division', 'Fractions'];
+    const randomTopic = topics[getRandomInt(0, topics.length - 1)];
+    
+    switch (randomTopic) {
+        case 'Addition':
+            return generateAdditionExercise(level);
+        case 'Subtraction':
+            return generateSubtractionExercise(level);
+        case 'Multiplication':
+            return generateMultiplicationExercise(level);
+        case 'Division':
+            return generateDivisionExercise(level);
+        case 'Fractions':
+            return generateFractionsExercise(level);
+    }
+}
